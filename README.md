@@ -1,4 +1,4 @@
-# Gravitational Wave x Neutral Hydrogen Intensity Mapping Cross-correlation Pipeline
+# GWHICcUP: Gravitational Wave x Neutral Hydrogen Cross-correlation Utility Pipeline
 
 This repository contains the data generation pipeline for cross-correlating Neutral Hydrogen 21cm Intensity Mapping (HI) with Gravitational Wave (GW) distributions.
 The outputs are designed to be ingested by a custom MontePython likelihood for Markov Chain Monte Carlo (MCMC) parameter estimation.
