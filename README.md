@@ -9,6 +9,7 @@ This pipeline calculates theoretical angular power spectra ($C_\ell$) and covari
 
 ## Installation
 
+
 ### 1. Python Environment
 To ensure reproducibility and avoid dependency conflicts, clone this repository and recreate the Conda environment used for this pipeline:
 
@@ -18,6 +19,7 @@ cd GWxHI_MultiCLASS
 conda env create -f environment.yaml
 conda activate  xC_multiCLASS
 ```
+
 
 ### 2. Patched MultiCLASS Installation
 This pipeline requires a slight modification to the MultiCLASS Python wrappers (cclassy.pxd and classy.pyx) to correctly compute the array sizes for multi-tracer cross-correlations (selection_multitracing).
@@ -37,8 +39,9 @@ make -j
 cd ..
 ```
 
-### 3. Repository Structure
 
+## Repository Structure
+```text
 GWxHI_MultiCLASS/
 │
 ├── data/                       # Directory for generated .pkl matrices
@@ -48,10 +51,11 @@ GWxHI_MultiCLASS/
 │   └── multiclass_multitracer.patch # Required C/Cython modifications
 ├── environment.yaml            # Conda dependencies
 ├── .gitignore                  
-└── README.md
+└── README.md                   
+```
 
-### 4. Pipeline Description
 
+## Pipeline Description
 The notebook follows this workflow:
 1) Generates the theoretical $dN/dz$ temperature brightness distributions for HI and source distributions for GWs.
 2) Injects the computed theoretical distributions into MultiCLASS to compute theoretical $C_\ell$ spectra.
@@ -59,12 +63,14 @@ The notebook follows this workflow:
 4) Computes the full Covariance and Inverse Covariance matrices required for the likelihood evaluation
 5) Saves .pkl files ready to be loaded directly into a MontePython likelihood for MCMC analysis.
 
-### 5. Output Files
+
+## Output Files
 The pipeline generates a suite of .pkl files containing the final matrices (e.g., _Cl.pkl, _Cov.pkl, and _InvCov.pkl).
 
 *Note:* Output matrices can be large and are explicitly excluded from version control via .gitignore.
 You must run the notebook locally to generate the data files for your MCMC analysis.
 
-### Acknowledgements
+
+## Acknowledgements
 * Built using [MultiCLASS](https://github.com/erikdelahaye/Multi_CLASS)
 * Data outputs are optimized for integration with the [MontePython](https://github.com/brinckmann/montepython_public) MCMC sampler.
