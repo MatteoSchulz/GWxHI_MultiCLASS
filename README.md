@@ -44,9 +44,13 @@ cd ..
 ```text
 GWxHI_MultiCLASS/
 │
-├── data/                       # Directory for generated .pkl matrices
+├── data/                       
+│   ├── chains/                 # Location for MontePython MCMC output chains
+│   ├── plots/                  # Generated GetDist corner/triangle plots
+│   └── ...                     # Generated .pkl matrices
 ├── notebooks/
 │   └── dataset_creation.ipynb  # Main pipeline and execution notebook
+│   └── mcmc_analysis.ipynb     # GetDist chain analysis and plotting notebook
 ├── patches/
 │   └── multiclass_multitracer.patch # Required C/Cython modifications
 ├── environment.yaml            # Conda dependencies
@@ -59,15 +63,16 @@ GWxHI_MultiCLASS/
 The notebook follows this workflow:
 1) Generates the theoretical $dN/dz$ temperature brightness distributions for HI and source distributions for GWs.
 2) Injects the computed theoretical distributions into MultiCLASS to compute theoretical $C_\ell$ spectra.
-3) Calculates the physical foregrounds, instrumental thermal noise, and shot noise related to the different tracers and add them to the theoretical spectra to get the simulated observed power specta
-4) Computes the full Covariance and Inverse Covariance matrices required for the likelihood evaluation
+3) Calculates the physical foregrounds, instrumental thermal noise, and shot noise related to the different tracers and add them to the theoretical spectra to get the simulated observed power specta.
+4) Computes the full Covariance and Inverse Covariance matrices required for the likelihood evaluation.
 5) Saves .pkl files ready to be loaded directly into a MontePython likelihood for MCMC analysis.
+6) A secondary notebook (mcmc_analysis.ipynb) uses GetDist to read the resulting MontePython chains, verify convergence, plot 1D/2D posterior contours of parameters.
 
 
 ## Output Files
 The pipeline generates a suite of .pkl files containing the final matrices (e.g., _Cl.pkl, _Cov.pkl, and _InvCov.pkl).
 
-*Note:* Output matrices can be large and are explicitly excluded from version control via .gitignore.
+*Note:* Output matrices and MCMC chains can be large and are explicitly excluded from version control via .gitignore.
 You must run the notebook locally to generate the data files for your MCMC analysis.
 
 

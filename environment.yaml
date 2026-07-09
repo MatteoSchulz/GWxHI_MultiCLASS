@@ -70,6 +70,7 @@ dependencies:
   - xz-gpl-tools=5.8.1
   - xz-tools=5.8.1
   - zeromq=4.3.5
+  - getdist
   - pip:
       - astropy==5.2.2
       - classy==2.9.0
