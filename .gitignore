@@ -1,0 +1,12 @@
+# Ignore Jupyter cache
+.ipynb_checkpoints/
+__pycache__/
+
+# Ignore large data and output files
+*.pkl
+*.dat
+*.txt
+data/
+
+# Ignore compiled CLASS files if someone builds it here
+class_public/

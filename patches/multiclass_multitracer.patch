@@ -1,0 +1,29 @@
+diff --git a/python/cclassy.pxd b/python/cclassy.pxd
+index aa733c5..1a216cd 100644
+--- a/python/cclassy.pxd
++++ b/python/cclassy.pxd
+@@ -236,6 +236,7 @@ cdef extern from "class.h":
+         int index_ct_tl
+         int * l_size
+         int index_md_scalars
++        short selection_multitracing
+ 
+     cdef struct output:
+         ErrorMsg error_message
+diff --git a/python/classy.pyx b/python/classy.pyx
+index 9bd595a..8c33a24 100644
+--- a/python/classy.pyx
++++ b/python/classy.pyx
+@@ -664,6 +664,12 @@ cdef class Class:
+         # computes the size, given the number of correlations needed to be computed
+         size = int((self.sp.d_size*(self.sp.d_size+1)-(self.sp.d_size-self.sp.non_diag)*
+                 (self.sp.d_size-1-self.sp.non_diag))/2);
++        # START OF MODIFICATION FOR CORRECT SIZE computation
++        if self.sp.selection_multitracing:
++            size += int((self.sp.d_size * (self.sp.d_size - 1) + (self.sp.d_size - self.sp.non_diag) * (self.sp.d_size - 1 - self.sp.non_diag))/2)
++        #else:
++        #    size = int((self.sp.d_size * (self.sp.d_size + 1) - (self.sp.d_size - self.sp.non_diag) * (self.sp.d_size - 1 - self.sp.non_diag))/2)
++        # END MODIFICATION TO CORRECT SIZE COMPUTATION
+         for elem in ['dd', 'll', 'dl']:
+             if elem in spectra:
+                 cl[elem] = {}
