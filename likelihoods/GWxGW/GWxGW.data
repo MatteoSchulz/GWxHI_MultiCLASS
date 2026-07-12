@@ -1,0 +1,22 @@
+GWxGW.data_directory=  os.path.join(data.path['data'], 'GWxGW') 
+#home/matteo/montepython_public-3.6/data/GWxGW
+
+GWxGW.cosmo_model          = "LCDM_Planck15"
+
+#GWxGW.tracer = 'hi'
+GWxGW.tracer = 'gw'
+GWxGW.correlation = 'auto'
+#GWxGW.correlation = 'cross'
+
+GWxGW.bias = 'bias' 
+#GWxGW.bias ='nobias'
+
+GWxGW.method = 'multiCLASS'
+
+GWxGW.nbins = 'allzbin'
+
+GWxGW.network = 'ET2LCE'
+#GWxGW.network = 'ET2L'
+#GWxGW.network = 'ETD'
+
+GWxGW.binned = 'no'

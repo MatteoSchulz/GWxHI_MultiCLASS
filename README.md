@@ -4,7 +4,7 @@ This repository contains the data generation pipeline for cross-correlating Neut
 The outputs are designed to be ingested by a custom MontePython likelihood for Markov Chain Monte Carlo (MCMC) parameter estimation.
 
 ## Overview
-This pipeline calculates theoretical angular power spectra ($C_\ell$) and covariance matrices using a modified version of MultiCLASS, and then adds the noise contributions to compute the correct simulated observed angula power spectra.
+This pipeline calculates theoretical angular power spectra ($C_\ell$) and covariance matrices using a modified version of MultiCLASS, and then adds the noise contributions to compute the correct simulated observed angular power spectra.
  It is fully vectorized and supports modular configurations for telescope parameters and GW network sensitivities (e.g., Einstein Telescope, Cosmic Explorer).
 
 ## Installation
@@ -40,6 +40,29 @@ cd ..
 ```
 
 
+### 3. Likelihood Installation
+This repository includes four custom MontePython likelihoods designed to read the generated `.pkl` matrices.
+To make them available to your MontePython installation without duplicating files, create a symbolic link for the ones you wish to use:
+
+```bash
+# Replace with your actual paths
+ln -s /path/to/GWxHI_MultiCLASS/likelihoods/GWxHI_fullM /path/to/montepython_public/montepython/likelihoods/GWxHI_fullM
+
+# Repeat the above command for HIxHI, GWxGW, or GWxHI_cross as needed.
+```
+
+
+### 4. Running the MCMC
+Once the likelihoods are symlinked and the mock data is generated via the notebook, you can launch the MCMC directly from your MontePython folder. 
+
+We provide template parameter files in the input directory with priors and proposal widths.
+Run the following command from your MontePython root directory (using the Full Matrix case as an example):
+
+```bash
+python montepython/MontePython.py run -p /path/to/GWxHI_MultiCLASS/input/GWxHI_fullM.param -o /path/to/GWxHI_MultiCLASS/data/chains/GWxHI_fullM -N 100000
+```
+
+
 ## Repository Structure
 ```text
 GWxHI_MultiCLASS/
@@ -48,6 +71,24 @@ GWxHI_MultiCLASS/
 │   ├── chains/                 # Location for MontePython MCMC output chains
 │   ├── plots/                  # Generated GetDist corner/triangle plots
 │   └── ...                     # Generated .pkl matrices
+├── input/
+│   ├── HIxHI.param             # Template param file for MontePython 
+│   ├── GWxGW.param             # Template param file for MontePython
+│   ├── GWxHI_fullM.param       # Template param file for MontePython
+│   └── GWxHI_cross.param       # Template param file for MontePython
+├── likelihoods/                
+│   ├── HIxHI/                  # MontePython likelihood for HIxHI auto-correlation
+│       ├── __init__.py         
+│       └── HIxHI.data          
+│   ├── GWxGW/                  # MontePython likelihood for GWxGW auto-correlation
+│       ├── __init__.py         
+│       └── GWxGW.data          
+│   ├── GWxHI_fullM/            # MontePython likelihood for GWxHI full analysis
+│       ├── __init__.py         
+│       └── GWxHI_fullM.data    
+│   └── GWxHI_cross             # MontePython likelihood for GWxHI cross-correlation
+│       ├── __init__.py         
+│       └── GWxHI_cross.data    
 ├── notebooks/
 │   └── dataset_creation.ipynb  # Main pipeline and execution notebook
 │   └── mcmc_analysis.ipynb     # GetDist chain analysis and plotting notebook

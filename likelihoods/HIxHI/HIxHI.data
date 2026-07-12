@@ -1,0 +1,22 @@
+HIxHI.data_directory=  os.path.join(data.path['data'], 'HIxHI') 
+#home/matteo/montepython_public-3.6/data/HIxHI
+
+HIxHI.cosmo_model          = "LCDM_Planck15"
+
+HIxHI.tracer = 'hi'
+#HIxHI.tracer = 'gw'
+HIxHI.correlation = 'auto'
+#HIxHI.correlation = 'cross'
+
+HIxHI.bias = 'bias' 
+#HIxHI.bias ='nobias'
+
+HIxHI.method = 'multiCLASS'
+
+HIxHI.nbins = 'allzbin'
+
+HIxHI.network = 'ET2LCE'
+#HIxHI.network = 'ET2L'
+#HIxHI.network = 'ETD'
+
+HIxHI.binned = 'no'

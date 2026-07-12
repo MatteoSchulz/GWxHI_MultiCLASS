@@ -1,0 +1,22 @@
+GWxHI_cross.data_directory=  os.path.join(data.path['data'], 'GWxHI_cross') 
+#home/matteo/montepython_public-3.6/data/GWxHI_cross
+
+GWxHI_cross.cosmo_model          = "LCDM_Planck15"
+
+#GWxHI_cross.tracer = 'hi'
+#GWxHI_cross.tracer = 'gw'
+#GWxHI_cross.correlation = 'auto'
+GWxHI_cross.correlation = 'cross'
+
+GWxHI_cross.bias = 'bias' 
+#GWxHI_cross.bias ='nobias'
+
+GWxHI_cross.method = 'multiCLASS'
+
+GWxHI_cross.nbins = 'allzbin'
+
+GWxHI_cross.network = 'ET2LCE'
+#GWxHI_cross.network = 'ET2L'
+#GWxHI_cross.network = 'ETD'
+
+GWxHI_cross.binned = 'no'

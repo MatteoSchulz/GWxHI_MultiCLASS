@@ -1,0 +1,83 @@
+#------Experiments to test (separated with commas)-----
+# To see all the available ones, please look in the
+# montepython/likelihoods folder. Every folder there is a valid likelihood to
+# test.
+
+data.experiments=['HIxHI']
+
+
+#------ Parameter list -------
+# data.parameters[class name] = [mean, min, max, 1-sigma, scale, role]
+# - if min max irrelevant, put to -1 or None (if you want a boundary of -1, use -1.0)
+# - if fixed, put 1-sigma to 0
+# - if scale irrelevant, put to 1, otherwise to the appropriate factor
+# - role is either 'cosmo', 'nuisance' or 'derived'
+# Cosmological parameters
+
+data.parameters['omega_cdm'] = [0.1188, 0.001, 0.99, 0.002, 1, 'cosmo']
+data.parameters['H0'] = [67.74, 30, 100, 0.3, 1, 'cosmo']
+
+# Optional: if your likelihood requires additional parameters
+data.parameters['Omega_m'] = [0, -1, -1, 0, 1., 'derived']
+data.parameters['Omega_Lambda'] = [0, -1, -1, 0, 1., 'derived']
+
+
+# MultiCLASS-specific settings
+data.cosmo_arguments['output'] = 'nCl, mPk'
+data.cosmo_arguments['number count contributions'] = 'density'
+
+
+# MultiCLASS-specific parameters which will be updated within the likelihood
+data.cosmo_arguments['selection_multitracing'] = 'no'
+data.cosmo_arguments['selection_window'] = 'gaussian'
+data.cosmo_arguments['selection_mean'] = '0.75, 1.25, 1.75, 2.25, 2.75, 3.25' 
+data.cosmo_arguments['selection_width'] = '0.25, 0.25, 0.25, 0.25, 0.25, 0.25'
+
+data.cosmo_arguments['selection_bias'] = '1.00, 1.00, 1.00, 1.00, 1.00, 1.00'
+data.cosmo_arguments['selection_magnification_bias'] = '0.4, 0.4, 0.4, 0.4, 0.4, 0.4'
+
+data.cosmo_arguments['selection_dNdz_1'] = 'file'
+data.cosmo_arguments['selection_dNdz_filepath_1'] = '/home/schulz/selection_files/selection_hi.txt'
+data.cosmo_arguments['selection_dNdzevolution_filepath_1'] = '/home/schulz/selection_files/evo_hi.txt'
+
+data.cosmo_arguments['non_diagonal'] = 5
+
+
+data.cosmo_arguments['modes'] = 's'
+
+data.cosmo_arguments['omega_b'] = 0.0223
+
+data.cosmo_arguments['l_max_lss'] = 200
+data.cosmo_arguments['lensing'] = 'no'
+data.cosmo_arguments['non linear'] = 'none'
+data.cosmo_arguments['P_k_max_h/Mpc'] = 50.0
+data.cosmo_arguments['z_max_pk'] = 8.
+
+data.cosmo_arguments['recombination'] = 'HyREC'
+data.cosmo_arguments['z_reio'] = 7.6711
+data.cosmo_arguments['N_ur'] = 3.044
+data.cosmo_arguments['A_s'] = 2.100549e-9
+data.cosmo_arguments['n_s'] = 0.9660499
+
+data.cosmo_arguments['l_linstep'] = 5
+data.cosmo_arguments['tol_perturb_integration'] = 1e-7
+data.cosmo_arguments['perturb_sampling_stepsize'] = 0.01
+data.cosmo_arguments['k_per_decade_for_pk'] = 70
+data.cosmo_arguments['k_max_tau0_over_l_max'] = 3.0
+
+
+# MCMC configuration
+#data.mcmc_parameters = {
+#    'oversampling': 4,
+#    'burn_in': 500,
+#    'write_step': 20
+#}
+# Number of steps taken, by default (overwritten by the -N command)
+data.N=10
+
+# Number of accepted steps before writing to file the chain. Larger means less
+# access to disc, but this is not so much time consuming.
+data.write_step=5
+
+# Initial jumping factor for all parameters
+data.jumping_factor = 0.5

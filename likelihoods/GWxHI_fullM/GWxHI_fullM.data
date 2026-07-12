@@ -1,0 +1,22 @@
+GWxHI_fullM.data_directory=  os.path.join(data.path['data'], 'GWxHI_fullM') 
+#home/matteo/montepython_public-3.6/data/GWxHI_fullM
+
+GWxHI_fullM.cosmo_model          = "LCDM_Planck15"
+
+#GWxHI_fullM.tracer = 'hi'
+#GWxHI_fullM.tracer = 'gw'
+#GWxHI_fullM.correlation = 'auto'
+GWxHI_fullM.correlation = 'cross'
+
+GWxHI_fullM.bias = 'bias' 
+#GWxHI_fullM.bias ='nobias'
+
+GWxHI_fullM.method = 'multiCLASS'
+
+GWxHI_fullM.nbins = 'allzbin'
+
+GWxHI_fullM.network = 'ET2LCE'
+#GWxHI_fullM.network = 'ET2L'
+#GWxHI_fullM.network = 'ETD'
+
+GWxHI_fullM.binned = 'no'
