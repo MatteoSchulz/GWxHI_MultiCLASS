@@ -73,7 +73,6 @@ dependencies:
   - getdist
   - pip:
       - astropy==5.2.2
-      - classy==2.9.0
       - contourpy==1.1.1
       - cycler==0.12.1
       - cython==0.29
