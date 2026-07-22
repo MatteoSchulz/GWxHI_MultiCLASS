@@ -37,8 +37,8 @@ data.cosmo_arguments['selection_bias'] = '1.00, 1.00, 1.00, 1.00, 1.00, 1.00'
 data.cosmo_arguments['selection_magnification_bias'] = '0.4, 0.4, 0.4, 0.4, 0.4, 0.4'
 
 data.cosmo_arguments['selection_dNdz_1'] = 'file'
-data.cosmo_arguments['selection_dNdz_filepath_1'] = '/home/schulz/selection_files/selection_hi.txt'
-data.cosmo_arguments['selection_dNdzevolution_filepath_1'] = '/home/schulz/selection_files/evo_hi.txt'
+data.cosmo_arguments['selection_dNdz_filepath_1'] = '/home/schulz/GWxHI_MultiCLASS/selection_files/selection_hi.txt'
+data.cosmo_arguments['selection_dNdzevolution_filepath_1'] = '/home/schulz/GWxHI_MultiCLASS/selection_files/evo_hi.txt'
 
 data.cosmo_arguments['non_diagonal'] = 5
 

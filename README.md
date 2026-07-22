@@ -94,6 +94,7 @@ GWxHI_MultiCLASS/
 │   └── mcmc_analysis.ipynb     # GetDist chain analysis and plotting notebook
 ├── patches/
 │   └── multiclass_multitracer.patch # Required C/Cython modifications
+├── selection_files/            # Location for selection_dNdz files
 ├── environment.yaml            # Conda dependencies
 ├── .gitignore                  
 └── README.md                   
